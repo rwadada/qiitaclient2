@@ -1,5 +1,6 @@
 package com.example.qiitaclient2.splash
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.qiitaclient2.R
 import com.example.qiitaclient2.core.AsyncCallBack
 import com.example.qiitaclient2.top.TopActivity
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 class SplashActivity : AppCompatActivity() {
 
@@ -38,6 +40,8 @@ class SplashActivity : AppCompatActivity() {
         viewModel.startTopActivity(CallBack())
     }
 
-
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
+    }
 
 }

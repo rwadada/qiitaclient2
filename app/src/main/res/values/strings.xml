@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">QiitaClient2</string>
     <string name="topfragment">TopFragment</string>
-    <string name="splashfragment">SplashFragment</string>
+    <string name="splashfragment">Qiita Client</string>
 </resources>
