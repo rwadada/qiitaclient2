@@ -1,15 +1,16 @@
 package com.example.qiitaclient2.splash
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import com.example.qiitaclient2.R
 import com.example.qiitaclient2.core.AsyncCallBack
-import com.example.qiitaclient2.top.TopActivity
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
+import com.example.qiitaclient2.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -17,20 +18,23 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_activity)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
         viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
 
-        val splashView: View by lazy {
-            findViewById<View>(R.id.splash)
+        val title: View by lazy {
+            findViewById<View>(R.id.title)
         }
 
-        splashView.startAnimation(viewModel.createAnimation())
+        val anim: Animation = AnimationUtils.loadAnimation(this, R.anim.animation_splash)
 
-        class CallBack() : AsyncCallBack {
+        title.startAnimation(anim)
+
+        class CallBack : AsyncCallBack {
             override fun onFinish() {
                 startActivity(
                     Intent(
                         applicationContext,
-                        TopActivity::class.java
+                        MainActivity::class.java
                     )
                 )
                 overridePendingTransition(0, 0)
@@ -38,10 +42,6 @@ class SplashActivity : AppCompatActivity() {
             }
         }
         viewModel.startTopActivity(CallBack())
-    }
-
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
     }
 
 }

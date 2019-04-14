@@ -6,7 +6,7 @@
         android:id="@+id/splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#137E10"
+        android:background="@color/colorPrimaryDark"
         tools:context=".splash.SplashActivity">
 
     <TextView
