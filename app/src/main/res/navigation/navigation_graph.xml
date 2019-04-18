@@ -9,17 +9,20 @@
             android:id="@+id/firstFragment"
             android:name="com.example.qiitaclient2.splash.SplashFragment"
             android:label="fragment_first"
-            tools:layout="@layout/fragment_splash" >
+            tools:layout="@layout/fragment_splash">
         <action
                 android:id="@+id/action_first_to_second"
-                app:destination="@id/secondFragment" />
+                app:destination="@id/secondFragment"
+                app:launchSingleTop="true"
+                app:popUpTo="@id/firstFragment"
+                app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
             android:id="@+id/secondFragment"
             android:name="com.example.qiitaclient2.top.TopFragment"
             android:label="fragment_second"
-            tools:layout="@layout/top_fragment" >
+            tools:layout="@layout/top_fragment">
     </fragment>
 
 </navigation>
