@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.qiitaclient2.MainActivity
 import com.example.qiitaclient2.R
 
 class TopFragment : Fragment() {
@@ -20,6 +21,8 @@ class TopFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val activity: MainActivity = activity as MainActivity
+        activity.visibleHeader()
         return inflater.inflate(R.layout.top_fragment, container, false)
     }
 
