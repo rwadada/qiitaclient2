@@ -2,4 +2,6 @@
     <string name="app_name">QiitaClient2</string>
     <string name="topfragment">TopFragment</string>
     <string name="splashfragment">Qiita Client</string>
+    <string name="login">LOGIN</string>
+    <string name="guest">GUEST</string>
 </resources>

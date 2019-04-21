@@ -42,7 +42,7 @@ class SplashFragment : Fragment() {
                 titleView.visibility = View.GONE
                 val thread = Thread(Runnable {
                     Thread.sleep(1000)
-                    Navigation.findNavController(view).navigate(R.id.action_first_to_second)
+                    Navigation.findNavController(view).navigate(R.id.action_first_to_login)
                 })
                 thread.start()
             }
