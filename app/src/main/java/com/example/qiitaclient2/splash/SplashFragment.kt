@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.qiitaclient2.R
+import com.example.qiitaclient2.core.ApplicationHolder
 
 class SplashFragment : Fragment() {
 
@@ -22,6 +23,7 @@ class SplashFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_splash, container, false)
         titleView = view.findViewById(R.id.title)
 
+
         val thread = Thread(Runnable {
             Thread.sleep(2000)
             startAnimation(view)
@@ -29,6 +31,10 @@ class SplashFragment : Fragment() {
         thread.start()
 
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
     private fun startAnimation(view: View) {
@@ -42,7 +48,11 @@ class SplashFragment : Fragment() {
                 titleView.visibility = View.GONE
                 val thread = Thread(Runnable {
                     Thread.sleep(1000)
-                    Navigation.findNavController(view).navigate(R.id.action_first_to_login)
+                    if (ApplicationHolder.queryParams.state != "" && ApplicationHolder.queryParams.code != "") {
+                        Navigation.findNavController(view).navigate(R.id.action_firstFragment_to_secondFragment)
+                    } else {
+                        Navigation.findNavController(view).navigate(R.id.action_first_to_login)
+                    }
                 })
                 thread.start()
             }

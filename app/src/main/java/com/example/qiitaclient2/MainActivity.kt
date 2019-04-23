@@ -1,11 +1,13 @@
 package com.example.qiitaclient2
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.example.qiitaclient2.core.Container
+import com.example.qiitaclient2.core.ApplicationHolder
+import com.example.qiitaclient2.core.setData
 import com.example.qiitaclient2.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,9 +22,15 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        if (intent.data is Uri && intent.data != null) {
+            ApplicationHolder.queryParams.setData(
+                intent.data!!.getQueryParameter("code"),
+                intent.data!!.getQueryParameter("state")
+            )
+        }
         binding.viewModel = viewModel
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
-        Container.viewHandler = viewHandler
+        ApplicationHolder.viewHandler = viewHandler
 
     }
 
