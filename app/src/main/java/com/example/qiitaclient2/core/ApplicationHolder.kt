@@ -20,8 +20,8 @@ object ApplicationHolder {
 }
 
 data class QueryParams(
-    var code: String,
-    var state: String
+    var code: String = "",
+    var state: String = ""
 )
 
 fun QueryParams.setData(code: String?, state: String?) {
