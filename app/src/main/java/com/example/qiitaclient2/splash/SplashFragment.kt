@@ -25,8 +25,14 @@ class SplashFragment : Fragment() {
 
 
         val thread = Thread(Runnable {
-            Thread.sleep(2000)
-            startAnimation(view)
+            if (ApplicationHolder.queryParams.state == "" && ApplicationHolder.queryParams.code == "") {
+                Thread.sleep(2000)
+                startAnimation(view)
+
+            } else {
+                Thread.sleep(500)
+                navigate(view, NavigationSet.TOP)
+            }
         })
         thread.start()
 
@@ -48,11 +54,7 @@ class SplashFragment : Fragment() {
                 titleView.visibility = View.GONE
                 val thread = Thread(Runnable {
                     Thread.sleep(1000)
-                    if (ApplicationHolder.queryParams.state != "" && ApplicationHolder.queryParams.code != "") {
-                        Navigation.findNavController(view).navigate(R.id.action_firstFragment_to_secondFragment)
-                    } else {
-                        Navigation.findNavController(view).navigate(R.id.action_first_to_login)
-                    }
+                    navigate(view, NavigationSet.LOGIN)
                 })
                 thread.start()
             }
@@ -64,5 +66,13 @@ class SplashFragment : Fragment() {
         titleView.startAnimation(animation)
     }
 
+    fun navigate(view: View, destination: NavigationSet) {
+        Navigation.findNavController(view).navigate(destination.resource)
+    }
+
+    enum class NavigationSet(val resource: Int) {
+        LOGIN(R.id.action_first_to_login),
+        TOP(R.id.action_firstFragment_to_secondFragment)
+    }
 
 }
