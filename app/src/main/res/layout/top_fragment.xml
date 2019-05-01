@@ -4,10 +4,22 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+                name="viewModel"
+                type="com.example.qiitaclient2.top.TopViewModel"/>
+        <import type="android.view.View" />
+
+        <variable
+                name="handler"
+                type="com.example.qiitaclient2.top.TopFragment" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#707D84"
             tools:context=".top.TopFragment">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -20,7 +32,7 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/colorPrimaryDark"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_scrollFlags="scroll|enterAlways">
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <ImageView
                         android:layout_width="?attr/actionBarSize"
@@ -47,6 +59,7 @@
                         android:textSize="30sp"
                         android:textStyle="bold"
                         android:textColor="#ffffff"
+                        android:onClick="@{handler::onClickTitle}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -88,7 +101,8 @@
                         android:src="@drawable/arrow_left"
                         app:layout_constraintTop_toTopOf="@id/date"
                         app:layout_constraintBottom_toBottomOf="@id/date"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="ContentDescription"/>
 
                 <ImageView
                         android:layout_width="24dp"
@@ -97,7 +111,8 @@
                         android:src="@drawable/arrow_right"
                         app:layout_constraintTop_toTopOf="@id/date"
                         app:layout_constraintBottom_toBottomOf="@id/date"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:ignore="ContentDescription"/>
 
                 <View
                         android:id="@+id/line"
@@ -145,6 +160,13 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <include
+                android:id="@+id/empty_view"
+                layout="@layout/layout_empty" />
+        <include
+                android:id="@+id/recycler_view"
+                android:visibility="@{safeUnbox(viewModel.isContentExist()) ? View.VISIBLE : View.GONE}"
+                layout="@layout/layout_list"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
