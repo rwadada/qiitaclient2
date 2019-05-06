@@ -80,6 +80,7 @@
                         android:textSize="25sp"
                         android:layout_marginTop="16dp"
                         android:text="2019年05月"
+                        android:onClick="@{handler::showMonthPicker}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
@@ -89,6 +90,7 @@
                         android:layout_height="16dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/arrow_down"
+                        android:onClick="@{handler::showMonthPicker}"
                         app:layout_constraintTop_toTopOf="@id/date"
                         app:layout_constraintBottom_toBottomOf="@id/date"
                         app:layout_constraintStart_toEndOf="@id/date"

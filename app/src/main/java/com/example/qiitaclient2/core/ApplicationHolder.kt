@@ -17,6 +17,8 @@ object ApplicationHolder {
 
     var queryParams = QueryParams("", "")
 
+    var status = Status.UNAUTHENTICATED
+
 }
 
 data class QueryParams(
@@ -41,4 +43,10 @@ fun QueryParams.setData(code: String?, state: String?) {
 fun QueryParams.clearData() {
     this.code = ""
     this.state = ""
+}
+
+enum class Status() {
+    AUTHENTICATED,
+    UNAUTHENTICATED,
+    FAILURE
 }

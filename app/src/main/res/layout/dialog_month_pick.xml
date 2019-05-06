@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable name="viewModel"
+                  type="com.example.qiitaclient2.custom.view.MonthPickerViewModel"/>
+        <variable name="handler"
+                  type="com.example.qiitaclient2.custom.view.MonthPickerDialog"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:layout_marginStart="40dp" android:layout_marginEnd="40dp">
+
+        <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:layout_marginTop="16dp"
+                android:text="2019年"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+                android:layout_width="20dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/arrow_left"
+                app:layout_constraintTop_toTopOf="@id/date"
+                app:layout_constraintBottom_toBottomOf="@id/date"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="ContentDescription"/>
+
+        <ImageView
+                android:layout_width="20dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/arrow_right"
+                app:layout_constraintTop_toTopOf="@id/date"
+                app:layout_constraintBottom_toBottomOf="@id/date"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="ContentDescription"/>
+
+        <LinearLayout
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/date">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="1月"
+                        android:id="@+id/month_jan"
+                        android:checked="@{viewModel.january ? true : false}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="2月"
+                        android:id="@+id/month_feb"
+                        android:checked="@{viewModel.february}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="3月"
+                        android:id="@+id/month_mar"
+                        android:checked="@{viewModel.march}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="4月"
+                        android:id="@+id/month_apr"
+                        android:checked="@{viewModel.april}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="5月"
+                        android:id="@+id/month_may"
+                        android:checked="@{viewModel.may}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="6月"
+                        android:id="@+id/month_jun"
+                        android:checked="@{viewModel.june}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="7月"
+                        android:id="@+id/month_jul"
+                        android:checked="@{viewModel.july}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="8月"
+                        android:id="@+id/month_aug"
+                        android:checked="@{viewModel.august}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="9月"
+                        android:id="@+id/month_sep"
+                        android:checked="@{viewModel.september}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="10月"
+                        android:id="@+id/month_oct"
+                        android:checked="@{viewModel.october}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="11月"
+                        android:id="@+id/month_nov"
+                        android:checked="@{viewModel.november}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="12月"
+                        android:id="@+id/month_dec"
+                        android:checked="@{viewModel.december}"
+                        android:onClick="@{handler::onCheckRadioButton}"
+                        android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/radio_group"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ok"
+                android:layout_marginTop="64dp"
+                android:text="cancel"/>
+
+        <Button
+                android:id="@+id/ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/radio_group"
+                app:layout_constraintStart_toEndOf="@id/cancel"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="64dp"
+                android:text="ok"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.qiitaclient2.R
 import com.example.qiitaclient2.core.ApplicationHolder
 
@@ -25,14 +27,14 @@ class SplashFragment : Fragment() {
 
 
         val thread = Thread(Runnable {
-            if (ApplicationHolder.queryParams.state == "" && ApplicationHolder.queryParams.code == "") {
+//            if (ApplicationHolder.queryParams.state == "" && ApplicationHolder.queryParams.code == "") {
                 Thread.sleep(2000)
                 startAnimation(view)
 
-            } else {
-                Thread.sleep(500)
-                navigate(view, NavigationSet.TOP)
-            }
+//            } else {
+//                Thread.sleep(500)
+//                navigate(view, NavigationSet.TOP)
+//            }
         })
         thread.start()
 
@@ -54,7 +56,8 @@ class SplashFragment : Fragment() {
                 titleView.visibility = View.GONE
                 val thread = Thread(Runnable {
                     Thread.sleep(1000)
-                    navigate(view, NavigationSet.LOGIN)
+                    val navController: NavController = findNavController()
+                    navController.navigate(R.id.loginFragment)
                 })
                 thread.start()
             }
@@ -71,8 +74,8 @@ class SplashFragment : Fragment() {
     }
 
     enum class NavigationSet(val resource: Int) {
-        LOGIN(R.id.action_first_to_login),
-        TOP(R.id.action_firstFragment_to_secondFragment)
+//        LOGIN(R.id.action_first_to_login),
+//        TOP(R.id.action_firstFragment_to_secondFragment)
     }
 
 }

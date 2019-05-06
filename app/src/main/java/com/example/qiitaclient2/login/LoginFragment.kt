@@ -11,13 +11,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.qiitaclient2.R
 import com.example.qiitaclient2.data.container.Container
 import com.example.qiitaclient2.data.container.LoginContainer
 import com.example.qiitaclient2.data.container.Targets
 import com.example.qiitaclient2.databinding.FragmentLoginBinding
+import com.example.qiitaclient2.top.TopFragmentArgs
 
 class LoginFragment : Fragment() {
+    val TAG: String = LoginFragment::class.java.simpleName
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +40,7 @@ class LoginFragment : Fragment() {
     }
 
     fun doLogin(view: View) {
+        Log.d(TAG, view.toString())
         val container: Container = LoginContainer()
         val uri: String = container.getData(Targets.LOGINURL, mapOf())
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
@@ -45,8 +49,14 @@ class LoginFragment : Fragment() {
     }
 
     fun doGuestLogin(view: View) {
+        Log.d(TAG, view.toString())
         Log.d(javaClass.simpleName,"working")
-        Navigation.findNavController(view).navigate(R.id.login_to_top)
+        findNavController().navigate(
+            LoginFragmentDirections
+                .actionLoginFragmentToTopFragment(
+                    code = "guest",
+                    state = "guest")
+        )
     }
 
 }

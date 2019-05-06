@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -51,6 +53,7 @@ dependencies {
     kapt 'com.android.databinding:compiler:3.1.4'
 
     // dagger
+    //noinspection GradleDependency
     implementation 'com.google.dagger:dagger:2.14.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
     kapt 'com.google.dagger:dagger-compiler:2.14.1'
@@ -64,4 +67,5 @@ dependencies {
 
     // test dagger
     kaptTest 'com.google.dagger:dagger-compiler:2.14.1'
+    compile "org.jetbrains.kotlin:kotlin-reflect:1.3.21"
 }
